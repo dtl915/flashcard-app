@@ -6,7 +6,7 @@ from tkinter import Tk, Button, Label, Checkbutton, IntVar, StringVar, Frame, Sc
 
 #import database library
 from sqlalchemy.sql import text  # Import the text function
-from sqlalchemy import create_engine, Column, String, Boolean, SmallInteger, DateTime, func
+from sqlalchemy import create_engine, Column, String, Boolean, SmallInteger, DateTime, Text, func
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 from datetime import datetime
@@ -15,7 +15,8 @@ import xml.etree.ElementTree as ET
 
 
 # Database connection configuration
-DATABASE_URL = "mssql+pyodbc://Harry-Duan/Word?driver=SQL+Server&trusted_connection=yes&charset=utf8"
+# MySQL: mysql+pymysql://username:password@host/database
+DATABASE_URL = "mysql+pymysql://root:ddxdd123@localhost/flashcard_db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
 session = SessionLocal()
@@ -25,9 +26,9 @@ Base = declarative_base()
 
 
 class Word(Base):
-    __tablename__ = 'words1'
+    __tablename__ = 'words'
     word = Column(String(60), primary_key=True)
-    explain = Column(String)
+    explain = Column(Text)
     needreview = Column(Boolean)
     tag = Column(String(50))
     hide = Column(Boolean)
