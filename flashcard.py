@@ -16,7 +16,7 @@ import xml.etree.ElementTree as ET
 
 # Database connection configuration
 # MySQL: mysql+pymysql://username:password@host/database
-DATABASE_URL = "mysql+pymysql://root:ddxdd123@localhost/flashcard_db"
+DATABASE_URL = "mysql+pymysql://root:PASSWORD@localhost/flashcard_db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
 session = SessionLocal()
